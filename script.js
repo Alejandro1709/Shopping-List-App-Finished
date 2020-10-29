@@ -1,3 +1,7 @@
+window.onload = () => {
+  //load saved data from local storage
+};
+
 function getInputText() {
   let input = document.getElementById('input__box').value;
 
