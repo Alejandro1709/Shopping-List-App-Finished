@@ -1,5 +1,4 @@
 let input = document.getElementById('input__box');
-
 var items = [];
 
 window.onload = () => {
@@ -14,20 +13,17 @@ function addItem(item) {
   if (item === '') {
     alert('Please Enter Some Text');
   } else {
-    items.push(item);
+    let itm = {
+      id: Date.now(),
+      name: item,
+      completed: false,
+    };
+
+    items.push(itm);
 
     addToLocalStorage(items);
 
     input.value = '';
-  }
-}
-
-function getFromLocalStorage() {
-  const reference = localStorage.getItem('items');
-
-  if (reference) {
-    items = JSON.parse(reference);
-    renderItems(items);
   }
 }
 
@@ -38,7 +34,7 @@ function renderItems(items) {
     content += `
     <div class="list__item">
     <div class="item__info">
-      <div class="item__title">${item}</div>
+      <div class="item__title">${item.name}</div>
     </div>
   </div>
     `;
@@ -50,6 +46,15 @@ function addToLocalStorage(items) {
   localStorage.setItem('items', JSON.stringify(items));
 
   renderItems(items);
+}
+
+function getFromLocalStorage() {
+  const reference = localStorage.getItem('items');
+
+  if (reference) {
+    items = JSON.parse(reference);
+    renderItems(items);
+  }
 }
 
 function checkKey(e) {

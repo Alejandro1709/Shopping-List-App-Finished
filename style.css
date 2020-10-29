@@ -63,7 +63,7 @@
   height: 500px;
   flex-direction: column;
   overflow: scroll;
-  background-color: #c4c4c4;
+  background-color: #fff;
 }
 
 .list__item {
@@ -73,11 +73,6 @@
   background-color: #f7f7f7;
   border-bottom: 1px solid #c4c4c4;
   padding: 10px;
-  cursor: pointer;
-}
-
-.list__item:hover {
-  background-color: #f1f1f1;
 }
 
 .item__title {
@@ -87,5 +82,5 @@
 }
 
 .item__action i {
-  margin-left: 25px;
+  margin-right: 25px;
 }
