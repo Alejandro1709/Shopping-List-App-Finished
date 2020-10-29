@@ -1,36 +1,59 @@
+let input = document.getElementById('input__box');
+
+var items = [];
+
 window.onload = () => {
-  //load saved data from local storage
+  getFromLocalStorage();
 };
 
-function getInputText() {
-  let input = document.getElementById('input__box').value;
+function saveItem() {
+  addItem(input.value);
+}
 
-  if (input === '') {
+function addItem(item) {
+  if (item === '') {
     alert('Please Enter Some Text');
   } else {
-    saveItem(input);
+    items.push(item);
+
+    addToLocalStorage(items);
+
+    input.value = '';
   }
-  document.getElementById('input__box').value = '';
+}
+
+function getFromLocalStorage() {
+  const reference = localStorage.getItem('items');
+
+  if (reference) {
+    items = JSON.parse(reference);
+    renderItems(items);
+  }
+}
+
+function renderItems(items) {
+  let content = '';
+
+  items.forEach((item) => {
+    content += `
+    <div class="list__item">
+    <div class="item__info">
+      <div class="item__title">${item}</div>
+    </div>
+  </div>
+    `;
+  });
+  document.getElementsByClassName('list')[0].innerHTML = content;
+}
+
+function addToLocalStorage(items) {
+  localStorage.setItem('items', JSON.stringify(items));
+
+  renderItems(items);
 }
 
 function checkKey(e) {
   if (e.keyCode === 13) {
-    getInputText();
+    saveItem();
   }
-}
-
-function saveItem(text) {
-  var content = '';
-
-  content += `
-  <div class="list__item">
-  <div class="item__info">
-    <div class="item__title">${text}</div>
-  </div>
-</div>
-  `;
-
-  document.getElementsByClassName('list')[0].innerHTML += content;
-
-  console.log(text);
 }
