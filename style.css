@@ -31,6 +31,7 @@
 
 .holder__search {
   display: flex;
+  justify-content: center;
   min-width: 50%;
   padding: 10px;
 }
@@ -45,6 +46,18 @@
   border-radius: 8px;
 }
 
+.holder__navigation > i {
+  text-align: center;
+  padding: 8px;
+  border-radius: 50%;
+  color: #757575;
+  background-color: white;
+  cursor: pointer;
+}
+
+.holder__navigation > i:hover {
+  background-color: #c4c4c4;
+}
 .list {
   display: flex;
   height: 500px;
@@ -69,6 +82,7 @@
 
 .item__title {
   font-size: 18px;
+  padding: 10px;
   font-weight: bold;
 }
 
